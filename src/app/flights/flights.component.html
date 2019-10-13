@@ -1,0 +1,23 @@
+<h1>Flight Tracking System</h1>
+<div class="container" *ngIf="flights != null">
+    <table class="table table-striped">
+        <thead class="font-25">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Company</th>
+                <th scope="col">Estimated departure</th>
+                <th scope="col">Departure</th>
+                <th scope="col">Arrival</th>
+            </tr>
+        </thead>
+        <tbody class="font-25">
+            <tr *ngFor="let flight of flights">
+                <td>{{ flight.id }}</td>
+                <td>{{ flight.company }}</td>
+                <td>{{ flight.estimatedDeparture }}</td>
+                <td>{{ flight.departure }}</td>
+                <td>{{ flight.arrival }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
