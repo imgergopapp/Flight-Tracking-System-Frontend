@@ -2,10 +2,10 @@
 <div class="container" *ngIf="flights != null">
     <h2>Filter by departure</h2>
     From :
-    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="departureFrom" 
+    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="departureFrom"
         [ngModelOptions]="{standalone: true}" />
     To :
-    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="departureTo" 
+    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="departureTo"
         [ngModelOptions]="{standalone: true}" />
     <button (click)="filterByDeparture()"> Filter</button>
     <br><br><br>
@@ -27,10 +27,24 @@
                     <input type="text" class="form-control" id="name" [(ngModel)]="flight.company " required
                         [ngModelOptions]="{standalone: true}" />
                 </td>
-                <td>{{ flight.estimatedDeparture }}</td>
-                <td>{{ flight.departure }}</td>
+                <td>{{ flight.estimatedDeparture[0] }}.
+                    {{ flight.estimatedDeparture[1] }}.
+                    {{ flight.estimatedDeparture[2] }}. @
+                    {{ flight.estimatedDeparture[3] }} :
+                    {{ flight.estimatedDeparture[4] }}
+                </td>
+                <td>{{ flight.departure[0] }}.
+                    {{ flight.departure[1] }}.
+                    {{ flight.departure[2] }}. @
+                    {{ flight.departure[3] }} :
+                    {{ flight.departure[4] }}
+                </td>
                 <td>
-                    {{flight.departure}}
+                    {{ flight.arrival[0] }}.
+                    {{ flight.arrival[1] }}.
+                    {{ flight.arrival[2] }}. @
+                    {{ flight.arrival[3] }} :
+                    {{ flight.arrival[4] }}
                 </td>
                 <td>
                     <button (click)="deleteFlight(flight.id)">Delete </button>
