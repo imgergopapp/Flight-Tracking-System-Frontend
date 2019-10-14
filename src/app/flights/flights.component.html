@@ -1,5 +1,14 @@
 <h1>Flight Tracking System</h1>
 <div class="container" *ngIf="flights != null">
+    <h2>Filter by departure</h2>
+    From :
+    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="departureFrom" 
+        [ngModelOptions]="{standalone: true}" />
+    To :
+    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="departureTo" 
+        [ngModelOptions]="{standalone: true}" />
+    <button (click)="filterByDeparture()"> Filter</button>
+    <br><br><br>
     <table class="table table-striped">
         <thead class="font-25">
             <tr>
@@ -8,15 +17,51 @@
                 <th scope="col">Estimated departure</th>
                 <th scope="col">Departure</th>
                 <th scope="col">Arrival</th>
+                <th></th>
             </tr>
         </thead>
         <tbody class="font-25">
             <tr *ngFor="let flight of flights">
                 <td>{{ flight.id }}</td>
-                <td>{{ flight.company }}</td>
+                <td>
+                    <input type="text" class="form-control" id="name" [(ngModel)]="flight.company " required
+                        [ngModelOptions]="{standalone: true}" />
+                </td>
                 <td>{{ flight.estimatedDeparture }}</td>
                 <td>{{ flight.departure }}</td>
-                <td>{{ flight.arrival }}</td>
+                <td>
+                    {{flight.departure}}
+                </td>
+                <td>
+                    <button (click)="deleteFlight(flight.id)">Delete </button>
+                    <button (click)="updateFlight(flight.id, flight.company)"> Update </button>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    #
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="name" [(ngModel)]="company" required
+                        [ngModelOptions]="{standalone: true}" />
+                </td>
+                <td>
+                    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="estimatedDeparture"
+                        required [ngModelOptions]="{standalone: true}" />
+                </td>
+                <td>
+                    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="departure" required
+                        [ngModelOptions]="{standalone: true}" />
+                </td>
+                <td>
+                    <input type="datetime-local" class="form-control" id="name" [(ngModel)]="arrival" required
+                        [ngModelOptions]="{standalone: true}" />
+                </td>
+                <td>
+                    <button (click)="createFlight()">Create</button>
+                </td>
+
             </tr>
         </tbody>
     </table>
